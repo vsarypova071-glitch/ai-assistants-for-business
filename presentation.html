@@ -296,6 +296,77 @@
     color: var(--text-2);
     opacity: 0.75;
   }
+
+  /* ========================================================
+     Mobile adaptation — desktop 16:9 stage stays untouched
+     above these breakpoints
+     ======================================================== */
+  @media (max-width: 768px) {
+    .stage {
+      width: 100vw;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .slide {
+      height: auto;
+      min-height: 100%;
+      padding: 11% 6% 18%;
+      justify-content: flex-start;
+    }
+    #s1 { padding: 0; }
+
+    .eyebrow { font-size: clamp(10px, 2.6vw, 12px); margin-bottom: 1vh; }
+    .title { font-size: clamp(22px, 6.5vw, 34px); }
+    .subtitle { font-size: clamp(13px, 3.6vw, 16px); max-width: 100%; }
+
+    .pill-row { gap: 8px; margin-top: 2.5vh; }
+    .pill { padding: 8px 14px; font-size: clamp(11px, 3vw, 13px); }
+
+    .card-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 2.5vh; }
+    .card { padding: 16px 14px; min-height: 84px; }
+    .card .card-title { font-size: clamp(13px, 3.4vw, 15px); }
+    .card .card-result { font-size: clamp(12px, 3vw, 14px); }
+
+    .callout { padding: 8px 14px; font-size: clamp(12px, 3.2vw, 14px); margin-top: 2.5vh; }
+
+    .steps-row { flex-direction: column; gap: 10px; margin-top: 2.5vh; }
+    .step-card { padding: 16px 18px; }
+    .step-card .step-num { font-size: clamp(20px, 5vw, 26px); margin-bottom: 6px; }
+    .step-card .step-label { font-size: clamp(13px, 3.4vw, 15px); }
+
+    .flow-list { margin-top: 2vh; gap: 6px; }
+    .flow-row { flex-wrap: wrap; padding: 8px 12px; font-size: clamp(11px, 3vw, 13px); gap: 4px 8px; }
+    .flow-trigger { min-width: 0; width: 100%; }
+
+    #s6 .final-row { flex-direction: column; align-items: stretch; gap: 3vh; height: auto; }
+    #s6 .final-left { flex: none; }
+    #s6 .final-right { flex: none; }
+    #s6 .qr-box { width: 120px; height: 120px; font-size: 13px; margin: 0 auto; }
+    #s6 .qr-caption { font-size: clamp(12px, 3.2vw, 14px); }
+    #s6 .signature { margin-top: 2.5vh; font-size: clamp(11px, 2.8vw, 13px); }
+
+    .footer-tag, .dots-nav, .hint {
+      position: fixed;
+      z-index: 5;
+    }
+    .footer-tag { bottom: 3%; }
+    .dots-nav { bottom: 3%; }
+    .hint { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .slide { padding: 10% 5% 16%; }
+    .title { font-size: clamp(20px, 7vw, 28px); }
+    .subtitle { font-size: clamp(12px, 3.8vw, 14px); }
+    .eyebrow { font-size: 10px; }
+
+    .card-grid { grid-template-columns: 1fr; gap: 8px; }
+    .pill { font-size: 11px; padding: 7px 12px; }
+    .pill-row { gap: 6px; }
+
+    #s6 .qr-box { width: 96px; height: 96px; font-size: 11px; }
+  }
 </style>
 </head>
 <body>
