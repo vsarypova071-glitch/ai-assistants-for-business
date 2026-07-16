@@ -134,20 +134,71 @@
     letter-spacing: 0.05em;
   }
 
-  /* Slide 1 keeps its own baked-in footer — hide the global tag only there */
+  /* Slide 1 has its own signature block — hide the global corner tag only there */
   #s1.active ~ .footer-tag { display: none; }
 
-  /* ---------- Slide 1: title card image ---------- */
-  #s1 {
-    padding: 0;
+  /* ---------- Slide 1: title slide (photo + text) ---------- */
+  #s1 .s1-row {
+    display: flex;
     align-items: center;
-    justify-content: center;
-  }
-  #s1 .title-card {
-    width: 100%;
+    justify-content: space-between;
     height: 100%;
-    object-fit: contain;
+    gap: 4vw;
+  }
+  #s1 .s1-photo-wrap {
+    flex: 0 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  #s1 .s1-photo {
+    height: 92%;
+    width: auto;
+    object-fit: cover;
     display: block;
+    -webkit-mask-image: linear-gradient(to right, black 78%, transparent 100%);
+    mask-image: linear-gradient(to right, black 78%, transparent 100%);
+  }
+  #s1 .s1-content { flex: 1.15; }
+  #s1 .s1-name {
+    margin-bottom: 2.2vh;
+  }
+  #s1 .s1-name-first,
+  #s1 .s1-name-last {
+    display: block;
+    font-weight: 800;
+    line-height: 1.05;
+  }
+  #s1 .s1-name-first {
+    font-size: clamp(30px, 2.6vw, 44px);
+    color: var(--text);
+  }
+  #s1 .s1-name-last {
+    font-size: clamp(42px, 3.8vw, 62px);
+    font-weight: 900;
+  }
+  #s1 .s1-bullets {
+    list-style: none;
+    margin-bottom: 3vh;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  #s1 .s1-bullets li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: clamp(24px, 1.5vw, 28px);
+    font-weight: 600;
+    color: var(--text);
+  }
+  #s1 .s1-bullets .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px rgba(198,255,46,0.7);
+    flex-shrink: 0;
   }
   /* ---------- Card grids ---------- */
   .card-grid {
@@ -325,7 +376,21 @@
       padding-top: calc(max(72px, 11%) + env(safe-area-inset-top, 0px));
       justify-content: flex-start;
     }
-    #s1 { padding: 0; }
+    #s1 .s1-row { flex-direction: column; height: auto; gap: 2.5vh; }
+    #s1 .s1-photo-wrap { height: 24vh; width: 100%; justify-content: center; }
+    #s1 .s1-photo {
+      height: 100%;
+      width: auto;
+      border-radius: 12px;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+    #s1 .s1-content { text-align: center; }
+    #s1 .s1-name { margin-bottom: 1.5vh; }
+    #s1 .s1-name-first { font-size: clamp(22px, 5.5vw, 28px); }
+    #s1 .s1-name-last { font-size: clamp(28px, 7vw, 38px); }
+    #s1 .s1-bullets { align-items: center; margin-bottom: 2vh; }
+    #s1 .s1-bullets li { font-size: clamp(15px, 3.6vw, 18px); }
 
     .eyebrow { font-size: clamp(10px, 2.6vw, 12px); margin-bottom: 1vh; }
     .title { font-size: clamp(22px, 6.5vw, 34px); }
@@ -389,7 +454,30 @@
 <div class="stage">
 
   <section class="slide active" id="s1">
-    <img class="title-card" src="assets/victoria-title-card.png" alt="">
+    <div class="s1-row">
+      <div class="s1-photo-wrap">
+        <img class="s1-photo" src="assets/victoria-photo.png" alt="Виктория Шарыпова">
+      </div>
+      <div class="s1-content">
+        <div class="s1-name">
+          <span class="s1-name-first">Виктория</span>
+          <span class="s1-name-last accent">Шарыпова</span>
+        </div>
+        <ul class="s1-bullets">
+          <li><span class="dot"></span>Предприниматель с 27-летним опытом</li>
+          <li><span class="dot"></span>AI-решения для бизнеса и контроля процессов</li>
+        </ul>
+        <h1 class="title">Слепые <span class="accent">зоны</span><br>бизнеса</h1>
+        <p class="subtitle">Где задачи зависают, а деньги теряются незаметно</p>
+        <div class="pill-row">
+          <div class="pill">Заявки</div>
+          <div class="pill">Документы</div>
+          <div class="pill">Сроки</div>
+          <div class="pill">Оплаты</div>
+          <div class="pill">Повторные продажи</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="slide" id="s2">
