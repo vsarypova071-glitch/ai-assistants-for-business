@@ -1,0 +1,18 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/tooling
+.vscode/
+*.log
+
+# Personal drafts and working documents — not for publication
+vystuplenie_3_minuty.md
+korotkaya_versiya_1_minuta.md
+struktura_slaydov.md
+prezentaciya_plan.md
+выступление_3_минуты.md
+короткая_версия_на_1_минуту.md
+структура_слайдов.md
+checklist_10_blind_zones.md
