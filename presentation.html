@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Слепые зоны бизнеса</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
   :root {
     --bg: #0B0F14;
@@ -305,6 +305,8 @@
     .stage {
       width: 100vw;
       height: 100vh;
+      height: 100svh;
+      height: 100dvh;
       overflow-y: auto;
       overflow-x: hidden;
     }
@@ -312,6 +314,7 @@
       height: auto;
       min-height: 100%;
       padding: 11% 6% 18%;
+      padding-top: calc(max(72px, 11%) + env(safe-area-inset-top, 0px));
       justify-content: flex-start;
     }
     #s1 { padding: 0; }
@@ -356,7 +359,10 @@
   }
 
   @media (max-width: 480px) {
-    .slide { padding: 10% 5% 16%; }
+    .slide {
+      padding: 10% 5% 16%;
+      padding-top: calc(max(88px, 10%) + env(safe-area-inset-top, 0px));
+    }
     .title { font-size: clamp(20px, 7vw, 28px); }
     .subtitle { font-size: clamp(12px, 3.8vw, 14px); }
     .eyebrow { font-size: 10px; }
@@ -427,7 +433,7 @@
       <div class="flow-row"><span class="flow-trigger">Прошёл срок</span><span class="flow-arrow">&#8594;</span><span class="flow-action">AI поднимает задачу</span></div>
       <div class="flow-row"><span class="flow-trigger">Клиент пропал</span><span class="flow-arrow">&#8594;</span><span class="flow-action">AI готовит повторное касание</span></div>
     </div>
-    <div class="callout">Хаос — это не когда что-то сломано. <span class="strong">Это когда вовремя никто не заметил.</span></div>
+    <div class="callout">Задача теряется не потому, что её не умеют делать. <span class="strong">А потому что никто вовремя не подхватил следующий шаг.</span></div>
   </section>
 
   <section class="slide" id="s6">
