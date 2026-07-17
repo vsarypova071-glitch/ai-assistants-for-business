@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Мини-аудит: 10 слепых зон бизнеса</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+  :root {
+    --bg: #0B0F14;
+    --card: #111827;
+    --text: #FFFFFF;
+    --text-2: #E4E8EE;
+    --green: #C6FF2E;
+    --violet: #7C3AED;
+    --border: rgba(198,255,46,0.25);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", -apple-system, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 700px 500px at 85% 0%, rgba(124,58,237,0.20), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 5% 90%, rgba(198,255,46,0.08), transparent 60%),
+      var(--bg);
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 7vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  h1 .accent { color: var(--green); text-shadow: 0 0 20px rgba(198,255,46,0.5); }
+
+  .intro {
+    margin-top: 16px;
+    color: var(--text-2);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .intro-box {
+    margin-top: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 18px;
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    background: rgba(11,15,20,0.92);
+    backdrop-filter: blur(6px);
+    padding: 14px 20px;
+    margin-top: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .progress-row {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-2);
+    margin-bottom: 8px;
+  }
+  .progress-row .count-zones { color: var(--green); }
+  .progress-track {
+    max-width: 720px;
+    margin: 0 auto;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--green);
+    box-shadow: 0 0 10px rgba(198,255,46,0.6);
+    transition: width 0.25s ease;
+  }
+
+  /* Questions */
+  .questions { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 20px;
+  }
+  .q-num {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .q-text {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .q-sub {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .q-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .q-btn {
+    flex: 1;
+    padding: 12px 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .q-btn:active { transform: scale(0.97); }
+  .q-btn.yes.selected {
+    background: var(--green);
+    color: #10230a;
+    border-color: var(--green);
+    box-shadow: 0 0 16px rgba(198,255,46,0.45);
+  }
+  .q-btn.no.selected {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  /* Result */
+  .result {
+    margin-top: 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 24px;
+  }
+  .result-pending {
+    color: var(--text-2);
+    font-size: 15px;
+    text-align: center;
+  }
+  .result-score {
+    font-size: 15px;
+    color: var(--text-2);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .result-score .num {
+    color: var(--green);
+    font-size: 20px;
+  }
+  .result-title {
+    font-size: clamp(20px, 5.5vw, 26px);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .result-rec {
+    font-size: 15px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+  .result-cta {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--text-2);
+    border-left: 3px solid var(--green);
+    padding-left: 12px;
+    line-height: 1.6;
+  }
+  .hidden { display: none; }
+
+  /* Footer signature */
+  .footer {
+    margin-top: 40px;
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .footer .name {
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .footer .tag {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--text-2);
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="eyebrow">Мини-аудит бизнеса</div>
+  <h1>10 слепых зон <span class="accent">бизнеса</span></h1>
+  <p class="intro">Ответьте «Да» или «Нет» на 10 вопросов — и за пару минут увидите, где именно в вашем бизнесе чаще всего теряются заявки, деньги и контроль.</p>
+  <div class="intro-box">Слепая зона бизнеса — это место, где задача уже появилась, но никто не видит, что она зависла. Клиент ждёт. Документ потерялся. Оплата просрочена. Менеджер говорит «занимаюсь», но результата нет.</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-row">
+    <span>Отвечено: <span id="answeredCount">0</span> / 10</span>
+    <span>Слепых зон найдено: <span class="count-zones" id="zonesCount">0</span></span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<div class="wrap">
+  <div class="questions" id="questions">
+
+    <div class="q-card" data-q="0">
+      <div class="q-num">Вопрос 1</div>
+      <div class="q-text">Заявка пришла, но ответили не сразу?</div>
+      <div class="q-sub">Клиент написал в WhatsApp, Telegram или через форму — и ответ ушёл через несколько часов или на следующий день.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="1">
+      <div class="q-num">Вопрос 2</div>
+      <div class="q-text">Клиент сказал «я подумаю» и пропал?</div>
+      <div class="q-sub">Интерес был, но повторного касания никто не сделал.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="2">
+      <div class="q-num">Вопрос 3</div>
+      <div class="q-text">Документы лежат в разных местах?</div>
+      <div class="q-sub">Часть в почте, часть в WhatsApp, часть у клиента, часть в папке.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="3">
+      <div class="q-num">Вопрос 4</div>
+      <div class="q-text">Оплату заметили с опозданием?</div>
+      <div class="q-sub">Клиент должен был оплатить, но никто вовремя не проверил.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="4">
+      <div class="q-num">Вопрос 5</div>
+      <div class="q-text">Менеджер «занимается», но этап неясен?</div>
+      <div class="q-sub">Спрашиваете «что с клиентом?» — а ответ размытый.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="5">
+      <div class="q-num">Вопрос 6</div>
+      <div class="q-text">Отчёт собирается вручную?</div>
+      <div class="q-sub">Каждую неделю кто-то копирует данные из таблиц, переписок и CRM.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="6">
+      <div class="q-num">Вопрос 7</div>
+      <div class="q-text">Одни и те же вопросы повторяются каждый день?</div>
+      <div class="q-sub">Цена, сроки, условия, документы — команда отвечает на одно и то же.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="7">
+      <div class="q-num">Вопрос 8</div>
+      <div class="q-text">Сроки никто системно не контролирует?</div>
+      <div class="q-sub">Договор, смета, отчёт или задача — должны быть готовы, но вспоминают поздно.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="8">
+      <div class="q-num">Вопрос 9</div>
+      <div class="q-text">Повторные продажи не настроены?</div>
+      <div class="q-sub">Клиент купил один раз, а потом о нём забыли.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+    <div class="q-card" data-q="9">
+      <div class="q-num">Вопрос 10</div>
+      <div class="q-text">О проблеме вы узнаёте слишком поздно?</div>
+      <div class="q-sub">Клиент уже ушёл, срок уже сорван, деньги уже зависли.</div>
+      <div class="q-buttons">
+        <button class="q-btn yes" data-val="1">Да</button>
+        <button class="q-btn no" data-val="0">Нет</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="result" id="result">
+    <p class="result-pending" id="resultPending">Ответьте на все 10 вопросов, чтобы увидеть итоговую оценку и рекомендацию.</p>
+    <div id="resultFull" class="hidden">
+      <div class="result-score">Слепых зон найдено: <span class="num" id="resultNum">0</span> из 10</div>
+      <div class="result-title" id="resultTitle"></div>
+      <p class="result-rec" id="resultRec"></p>
+      <p class="result-cta">Выберите свою первую слепую зону и обсудите с Викторией, какую задачу можно передать AI уже на первом шаге.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="name">Виктория Шарыпова</div>
+    <div class="tag">AI-решения для бизнеса и контроля процессов</div>
+  </div>
+</div>
+
+<script>
+  var answers = new Array(10).fill(null);
+
+  var tiers = [
+    {
+      max: 2,
+      title: "Процессы под контролем",
+      rec: "У вас в целом порядок. Найдите одну точку, где чаще всего происходит пауза, и усильте именно её — не нужно перестраивать всё сразу."
+    },
+    {
+      max: 5,
+      title: "Есть регулярные потери",
+      rec: "Это обычная картина для растущего бизнеса. Выберите одну слепую зону из отмеченных — там, где чаще всего теряются заявки или деньги, — и начните с неё."
+    },
+    {
+      max: 8,
+      title: "Много времени уходит в ручную рутину",
+      rec: "Бизнес заметно теряет время и деньги на процессах, которые никто не контролирует системно. Стоит закрыть 1–2 самые дорогие зоны в ближайшее время, а не откладывать."
+    },
+    {
+      max: 10,
+      title: "Срочно нужен порядок во входящих задачах",
+      rec: "Слишком много держится на ручном контроле — риск потерь высокий. Нужен порядок во входящих заявках, документах и сроках уже сейчас."
+    }
+  ];
+
+  function getTier(score) {
+    for (var i = 0; i < tiers.length; i++) {
+      if (score <= tiers[i].max) return tiers[i];
+    }
+    return tiers[tiers.length - 1];
+  }
+
+  function render() {
+    var answeredCount = answers.filter(function (a) { return a !== null; }).length;
+    var zonesCount = answers.reduce(function (sum, a) { return sum + (a === 1 ? 1 : 0); }, 0);
+
+    document.getElementById('answeredCount').textContent = answeredCount;
+    document.getElementById('zonesCount').textContent = zonesCount;
+    document.getElementById('progressFill').style.width = (answeredCount / 10 * 100) + '%';
+
+    var pending = document.getElementById('resultPending');
+    var full = document.getElementById('resultFull');
+
+    if (answeredCount === 10) {
+      pending.classList.add('hidden');
+      full.classList.remove('hidden');
+      var tier = getTier(zonesCount);
+      document.getElementById('resultNum').textContent = zonesCount;
+      document.getElementById('resultTitle').textContent = tier.title;
+      document.getElementById('resultRec').textContent = tier.rec;
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      pending.classList.remove('hidden');
+      full.classList.add('hidden');
+    }
+  }
+
+  document.querySelectorAll('.q-card').forEach(function (card) {
+    var qIndex = parseInt(card.getAttribute('data-q'), 10);
+    var buttons = card.querySelectorAll('.q-btn');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var val = parseInt(btn.getAttribute('data-val'), 10);
+        answers[qIndex] = val;
+        buttons.forEach(function (b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        render();
+      });
+    });
+  });
+
+  render();
+</script>
+
+</body>
+</html>
