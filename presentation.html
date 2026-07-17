@@ -333,6 +333,31 @@
     color: var(--text-2);
     line-height: 1.5;
   }
+  #s6 .qr-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 34px;
+    background: var(--green);
+    color: #0B0F14;
+    font-weight: 800;
+    font-size: clamp(17px, 1.4vw, 21px);
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 0 26px rgba(198,255,46,0.5);
+    transition: transform 0.15s ease;
+  }
+  #s6 .qr-cta-btn:hover,
+  #s6 .qr-cta-btn:active {
+    transform: scale(0.97);
+  }
+  #s6 .qr-hint {
+    margin-top: 10px;
+    max-width: 280px;
+    font-size: clamp(13px, 1.1vw, 15px);
+    color: var(--text-2);
+    opacity: 0.8;
+  }
   #s6 .signature {
     margin-top: 3vh;
     font-size: clamp(16px, 1.2vw, 20px);
@@ -590,6 +615,8 @@
       <div class="final-right">
         <div class="qr-box"><img src="assets/qr-mini-audit.png" alt="QR-код на мини-аудит 10 слепых зон бизнеса"></div>
         <p class="qr-caption">Заберите мини-аудит:<br><span class="accent">10 слепых зон бизнеса</span></p>
+        <a class="qr-cta-btn" href="https://ai-assistants-for-business.vercel.app/mini-audit" target="_blank" rel="noopener">Пройти мини-аудит</a>
+        <p class="qr-hint">Если вы смотрите презентацию с телефона — нажмите на кнопку</p>
       </div>
     </div>
   </section>
