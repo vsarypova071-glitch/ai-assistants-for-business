@@ -211,6 +211,44 @@
   }
   .hidden { display: none; }
 
+  /* Sales CTA block */
+  .sales-cta {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .sales-cta-title {
+    font-size: clamp(19px, 5vw, 24px);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .sales-cta-text {
+    font-size: 15px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .sales-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 380px;
+    padding: 18px 22px;
+    background: var(--green);
+    color: #0B0F14;
+    font-weight: 800;
+    font-size: 17px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 0 28px rgba(198,255,46,0.5);
+    transition: transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sales-cta-btn:active { transform: scale(0.97); }
+
   /* Footer signature */
   .footer {
     margin-top: 40px;
@@ -359,6 +397,12 @@
       <div class="result-title" id="resultTitle"></div>
       <p class="result-rec" id="resultRec"></p>
       <p class="result-cta">Выберите свою первую слепую зону и обсудите с Викторией, какую задачу можно передать AI уже на первом шаге.</p>
+
+      <div class="sales-cta">
+        <h3 class="sales-cta-title">Хотите понять, с чего начать?</h3>
+        <p class="sales-cta-text">Обсудите со мной одну найденную слепую зону. Я покажу, какую задачу можно передать AI первой — без сложного и дорогого внедрения.</p>
+        <a class="sales-cta-btn" href="https://v-sharypova.ru" target="_blank" rel="noopener noreferrer">Обсудить мою слепую зону</a>
+      </div>
     </div>
   </div>
 
